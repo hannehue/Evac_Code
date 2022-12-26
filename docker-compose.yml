@@ -1,0 +1,21 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
+      - MONGO_DB_CONNECTION_STRING=mongodb+srv://hannehue:<password>@evaclocal.2jo2sx6.mongodb.net/?retryWrites=true&w=majority
+      - MONGO_DB_NAME=EvacLocal
+      - REDIS_URI=rediss://default:<password>@evacredis-hansrpedersen-c086.aivencloud.com:22313
+      
+
+      
